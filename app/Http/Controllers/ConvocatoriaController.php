@@ -18,10 +18,17 @@ class ConvocatoriaController extends Controller
         return \View::make('lista',compact('registros'));
     }
 
-
-    public function search(Request $request){
+     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function buscar(Request $request){
+        //$registros = Registro::all(); 
         $registros = Registro::where('nombre','like','%'.$request->nombre.'%')->get();
-         return \View::make('lista', compact('registros'));
+        return \View::make('lista',compact('registros'));
+       
+        
         
     }
 
@@ -57,7 +64,7 @@ class ConvocatoriaController extends Controller
         $registro->telefono = $request->telefono;
         $registro->email = $request->email;
         $registro->save();
-        return redirect('registro')->with('notice', 'El usuario ha sido modificado correctamente.');
+        return redirect('http://saludchiapas.gob.mx/');
     }
 
     /**
@@ -74,7 +81,7 @@ class ConvocatoriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\vc  $vc
+     * @param  \App\Registro  $Registro
      * @return \Illuminate\Http\Response
      */
     public function edit(Registro $Registro)
