@@ -18,6 +18,13 @@ class ConvocatoriaController extends Controller
         return \View::make('lista',compact('registros'));
     }
 
+
+    public function search(Request $request){
+        $registros = Registro::where('nombre','like','%'.$request->nombre.'%')->get();
+         return \View::make('lista', compact('registros'));
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +46,7 @@ class ConvocatoriaController extends Controller
         
          $this->validate($request, [
             'nombre' => 'required|max:255',
-            'cedula' => 'required|max:10|unique',
+            'cedula' => 'required|max:10',
             'telefono' => 'required|max:10'
 
         ]); 
@@ -50,16 +57,16 @@ class ConvocatoriaController extends Controller
         $registro->telefono = $request->telefono;
         $registro->email = $request->email;
         $registro->save();
-        return redirect('registro')->with('notice', 'El usuario ha sido modificado correctamente.');;
+        return redirect('registro')->with('notice', 'El usuario ha sido modificado correctamente.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\vc  $vc
+     * @param  \App\Registro  $Registro
      * @return \Illuminate\Http\Response
      */
-    public function show(vc $vc)
+    public function show(Registro $Registro)
     {
         //
     }
@@ -70,7 +77,7 @@ class ConvocatoriaController extends Controller
      * @param  \App\vc  $vc
      * @return \Illuminate\Http\Response
      */
-    public function edit(vc $vc)
+    public function edit(Registro $Registro)
     {
         //
     }
@@ -79,10 +86,10 @@ class ConvocatoriaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\vc  $vc
+     * @param  \App\Registro $Registro
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, vc $vc)
+    public function update(Request $request, Registro $Registro)
     {
         //
     }
@@ -90,10 +97,10 @@ class ConvocatoriaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\vc  $vc
+     * @param  \App\Registro $Registro
      * @return \Illuminate\Http\Response
      */
-    public function destroy(vc $vc)
+    public function destroy(Registro $Registro)
     {
         //
     }

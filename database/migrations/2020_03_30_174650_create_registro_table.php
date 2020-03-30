@@ -18,7 +18,7 @@ class CreateRegistroTable extends Migration
             $table->string('nombre',255);
             $table->string('especialidad',100);
             $table->string('telefono',10);
-            $table->string('cedula',10)->unique();
+            $table->string('cedula',10);
             $table->string('email',100)->nullable();
             $table->timestamps();
         });

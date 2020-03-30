@@ -21,5 +21,6 @@ Route::resource('lista', 'ConvocatoriaController');
 
 
 Route::resource('crear', 'ConvocatoriaController');
+Route::get('lista/search', 'ConvocatoriaController@search');
 
 
