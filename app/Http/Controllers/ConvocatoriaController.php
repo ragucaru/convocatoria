@@ -29,8 +29,10 @@ class ConvocatoriaController extends Controller
         
         $buscar=$request->nombre;
         if ($buscar!='')
-            $registros = Registro::where('nombre','LIKE','%'.$buscar.'%')->
-                        orWhere("cedula",'LIKE','%'.$buscar.'%')->get();
+            $registros = Registro::where('nombre','LIKE','%'.$buscar.'%')
+                        ->orWhere("cedula",'LIKE','%'.$buscar.'%')
+                        ->orWhere("especialidad",'LIKE','%'.$buscar.'%')
+                        ->get();
         else
             $registros = Registro::all(); 
 
