@@ -15,6 +15,7 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <div class="container">
+
             <div class="row">
                     <div class="col-md-6">
                         <img src="images/salud.png" class="rounded float-left" alt="...">
@@ -32,21 +33,39 @@
             </div>
         </div>
         <div class="container">
+        
             <div class="row">
+            
                 <form method="get" action='lista'>
-
-                    <div class="input-group mb-12">
+                {{--  <div class="card">  --}}
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>                    
                         <input type="text" name = "nombre" class="form-control" placeholder="Nombre o Cédula" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">Buscar</button>
-                        </div>
-                    </div>                
-                                                
+                    </div>
+                   {{--   <div class="form-group">                                   
+                                <label for="especialidad" class="col-sm-3 col-form-label">Especialidad</label>
+                                <select class="form-control" id="especialidad" name="especialidad">
+                                    <option>Neumólogo</option>
+                                    <option>Neumólogo Pediatra</option>
+                                    <option>Intensivista</option>
+                                    <option>Urgenciólogo</option>
+                                    <option>Anesteciólogo</option>
+                                    <option>Enfermero/a/s especializadas en urgencias médicas e intensivistas</option>
+                                </select>
+                                    
+                    </div>  --}}
+                
+                    <div class="form-group"> 
+                        <button class="btn btn-primary" type="submit">Buscar</button>
+                    </div>
+                                    
+               {{--   </div>    --}}                       
                         
                 </form>
+            
             </div>
         </div>
-                    <br>
+       
         <div class="container">
             <div class="row">
                     <p>Total de Registros: {{$registros->total() }} </p>
