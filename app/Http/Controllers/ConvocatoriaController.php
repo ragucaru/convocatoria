@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Registro;
 use Illuminate\Http\Request;
 
+
 class ConvocatoriaController extends Controller
 {
     /**
@@ -15,8 +16,8 @@ class ConvocatoriaController extends Controller
     public function index()
     {
         
-        $registros = Registro::all(); 
-        return \View::make('lista',compact('registros'));
+        //$registros = Registro::all(); 
+        //return \View::make('lista',compact('registros'));
     }
 
      /**
@@ -32,12 +33,12 @@ class ConvocatoriaController extends Controller
             $registros = Registro::where('nombre','LIKE','%'.$buscar.'%')
                         ->orWhere("cedula",'LIKE','%'.$buscar.'%')
                         ->orWhere("especialidad",'LIKE','%'.$buscar.'%')
-                        ->get();
+                        ->paginate(10);
         else
-            $registros = Registro::all(); 
+            $registros = Registro::paginate(10); 
 
-        
-        return \View::make('lista',compact('registros'));  
+            return view('lista', ['registros' => $registros]);
+       // return \View::make('lista',compact('registros'));  
         
        /*  $usuarios = Usuarios::with("horarios")->where('status', '=', 0);//->paginate(15);//->where("Badgenumber", "=", 921)->paginate(15);
         if($name !='')

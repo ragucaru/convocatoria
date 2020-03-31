@@ -49,6 +49,7 @@
                     <br>
         <div class="container">
             <div class="row">
+                    <p>Total de Registros: {{$registros->total() }} </p>
                     <table class="table" id="dataTable" width="100%" cellspacing="0">
                         <thead>                    
                             <tr>                       
@@ -74,9 +75,11 @@
                                     </td>
                 --}}
                                 </tr>
-                            @endforeach        
+                            @endforeach  
+
                         </tbody>
                     </table>
+                    {{ $registros->links() }}
             </div>
         </div>
 

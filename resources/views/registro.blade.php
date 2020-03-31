@@ -25,6 +25,7 @@
                     
                 </div>
             </div>
+            <div class="card">
             <div class="row">
                 <div class="col-md-12">
                     <div class="well well-sm">  
@@ -75,6 +76,7 @@
                         </form>
                      </div>
                 </div>
+            </div>
             </div>
         </div>
 
