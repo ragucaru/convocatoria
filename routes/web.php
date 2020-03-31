@@ -11,16 +11,20 @@
 |
 */
 
-Route::get('/registro', function () {
+Route::get('/registro_medico', function () {
     return view('registro');
+});
+
+Route::get('/exito', function () {
+    return view('exito');
 });
 
 
 
-Route::resource('lista', 'ConvocatoriaController');
+//Route::resource('lista', 'ConvocatoriaController');
 
 
 Route::resource('crear', 'ConvocatoriaController');
-Route::get('lista/buscar', 'ConvocatoriaController@buscar');
+Route::get('lista', 'ConvocatoriaController@buscar');
 
-//Route::get('lista/search', ['as' => 'lista/search', 'uses'=>'ConvocatoriaController@search']);
+?>

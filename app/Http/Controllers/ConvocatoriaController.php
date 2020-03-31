@@ -14,6 +14,7 @@ class ConvocatoriaController extends Controller
      */
     public function index()
     {
+        
         $registros = Registro::all(); 
         return \View::make('lista',compact('registros'));
     }
@@ -23,12 +24,26 @@ class ConvocatoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function buscar(Request $request){
-        //$registros = Registro::all(); 
-        $registros = Registro::where('nombre','like','%'.$request->nombre.'%')->get();
-        return \View::make('lista',compact('registros'));
-       
+    public function buscar(Request $request)
+    {
         
+        $buscar=$request->nombre;
+        if ($buscar!='')
+            $registros = Registro::where('nombre','LIKE','%'.$buscar.'%')->
+                        orWhere("cedula",'LIKE','%'.$buscar.'%')->get();
+        else
+            $registros = Registro::all(); 
+
+        
+        return \View::make('lista',compact('registros'));  
+        
+       /*  $usuarios = Usuarios::with("horarios")->where('status', '=', 0);//->paginate(15);//->where("Badgenumber", "=", 921)->paginate(15);
+        if($name !='')
+            $usuarios = $usuarios->where("TITLE",'LIKE','%'.$name.'%')
+                    ->orWhere("Name",'LIKE','%'.$name.'%')
+                    ->orWhere("Badgenumber",'=',$name);
+        
+         */
         
     }
 
@@ -50,7 +65,7 @@ class ConvocatoriaController extends Controller
      */
     public function store(Request $request)
     {
-        
+        try{
          $this->validate($request, [
             'nombre' => 'required|max:255',
             'cedula' => 'required|max:10',
@@ -64,7 +79,11 @@ class ConvocatoriaController extends Controller
         $registro->telefono = $request->telefono;
         $registro->email = $request->email;
         $registro->save();
-        return redirect('http://saludchiapas.gob.mx/');
+        return redirect('exito');
+         }catch (Exception $e) { 
+            // if an exception happened in the try block above 
+         
+        }
     }
 
     /**

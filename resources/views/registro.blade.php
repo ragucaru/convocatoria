@@ -16,16 +16,27 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <div class="container">
             <div class="row">
+                <div class="col-md-6">
+                    <img src="images/chiapas.png" class="rounded float-left" alt="...">
+                    
+                </div>
+                <div class="col-md-6">
+                    <img src="images/salud.png" class="rounded float-left" alt="...">
+                    
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
-                    <div class="well well-sm">   
+                    <div class="well well-sm">  
            
                         <form method="POST" action='crear'>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
                         
                             <div class="form-row">
                                 <div class="form-group col-md-3">
-                                    <label for="nombre" class="col-sm-3 col-form-label">Nombre</label>
+                                    <label for="nombre" class="col-sm-3 col-form-label">Nombre</label>                                    
                                     <input type="text" maxlength="255" class="form-control" id="nombre" name="nombre" placeholder="Nombre..." required>
+                                    
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="nombre" class="col-sm-3 col-form-label">Cédula</label>

@@ -16,15 +16,39 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <div class="container">
             <div class="row">
-                <form method="GET" action='lista/buscar'>
-                        <div class="form-group">
-                            <label for="Nombre">Nombre</label>
-                            <input type="text" class="form-control" name = "nombre" >
+                    <div class="col-md-6">
+                        <img src="images/chiapas.png" class="rounded float-left" alt="...">
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <img src="images/salud.png" class="rounded float-right" alt="...">
+                        
+                    </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="row justify-content-md-center">
+                <h5>Lista de Especialistas Bolsa de Trabajo</h5>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <form method="get" action='lista'>
+
+                    <div class="input-group mb-12">
+                        <input type="text" name = "nombre" class="form-control" placeholder="Nombre o Cédula" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
                         </div>
-                        <button type="submit" class="btn btn-primary">buscar</button>
+                    </div>                
+                                                
                         
                 </form>
+            </div>
+        </div>
                     <br>
+        <div class="container">
+            <div class="row">
                     <table class="table" id="dataTable" width="100%" cellspacing="0">
                         <thead>                    
                             <tr>                       
