@@ -15,6 +15,7 @@ Route::get('/registro_medico', function () {
     return view('registro');
 });
 
+Route::get('/', function () { return Redirect::to('registro_medico'); });
 Route::get('/exito', function () {
     return view('exito');
 });

@@ -17,11 +17,11 @@
         <div class="container">
             <div class="row">
                     <div class="col-md-6">
-                        <img src="images/chiapas.png" class="rounded float-left" alt="...">
+                        <img src="images/salud.png" class="rounded float-left" alt="...">
                         
                     </div>
                     <div class="col-md-6">
-                        <img src="images/salud.png" class="rounded float-right" alt="...">
+                        <img src="images/chiapas.png" class="rounded float-right" alt="...">
                         
                     </div>
             </div>
