@@ -13,8 +13,10 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     Usted se ha conectado!
+
+                    <a class="btn btn-link" href="lista">
+                                        {{ __('Ir a la lista') }}
                 </div>
             </div>
         </div>
