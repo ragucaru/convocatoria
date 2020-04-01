@@ -26,6 +26,10 @@ Route::get('/exito', function () {
 
 
 Route::resource('crear', 'ConvocatoriaController');
-Route::get('lista', 'ConvocatoriaController@buscar');
+Route::get('lista', 'ConvocatoriaController@buscar')->middleware('auth');
 
-?>
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+//Route::middleware('Auth')->get('lista', 'ConvocatoriaController@buscar');

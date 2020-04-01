@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Registro</title>
+    <title>Lista de Especialistas</title>
   </head>
     <body>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -34,41 +34,55 @@
         </div>
         <div class="container">
         
-            <div class="row">
-            
-                <form method="get" action='lista'>
-                {{--  <div class="card">  --}}
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>                    
-                        <input type="text" name = "nombre" class="form-control" placeholder="Nombre o Cédula" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    </div>
-                   {{--   <div class="form-group">                                   
-                                <label for="especialidad" class="col-sm-3 col-form-label">Especialidad</label>
-                                <select class="form-control" id="especialidad" name="especialidad">
-                                    <option>Neumólogo</option>
-                                    <option>Neumólogo Pediatra</option>
-                                    <option>Intensivista</option>
-                                    <option>Urgenciólogo</option>
-                                    <option>Anesteciólogo</option>
-                                    <option>Enfermero/a/s especializadas en urgencias médicas e intensivistas</option>
-                                </select>
-                                    
-                    </div>  --}}
-                
-                    <div class="form-group"> 
-                        <button class="btn btn-primary" type="submit">Buscar</button>
-                    </div>
-                                    
-               {{--   </div>    --}}                       
-                        
-                </form>
-            
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card bg-light mb-3">Filtro</div>
+                            <div class="card-body ">
+                                <form class="form-inline" method="get" action='lista'>
+                                
+                                        <div class="form-group row">
+                                            <div class="col-md-3">
+                                                <label for="nombre">Nombre</label>                    
+                                                <input type="text" name = "nombre" class="form-control" placeholder="Nombre o Cédula" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                            </div>
+                                            <div class="col-md-1">
+                                            </div>                          
+                                            <div class="col-md-6">
+                                                <label for="especialidad">Especialidad</label>
+                                                <select class="form-control" id="especialidad" name="especialidad">
+                                                    <option></option>
+                                                    <option>Neumólogo</option>
+                                                    <option>Neumólogo Pediatra</option>
+                                                    <option>Intensivista</option>
+                                                    <option>Urgenciólogo</option>
+                                                    <option>Anesteciólogo</option>
+                                                    <option>Enfermero/a/s especializadas en urgencias médicas e intensivistas</option>
+                                                </select>
+                                            </div>
+                                            
+                                        </div>             
+                                
+                                        <div class="form-group row mb-0">
+                                            <div class="col-md-8 offset-md-4">
+                                             <button class="btn btn-primary" type="submit">Buscar</button>    
+                                            </div>
+                                        </div> 
+                                </form>
+                            </div>
+                        </div>
+                     </div>
+                </div> 
             </div>
         </div>
-       
         <div class="container">
             <div class="row">
-                    <p>Total de Registros: {{$registros->total() }} </p>
+                <p>Total de Registros: {{$registros->total() }} </p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                    
                     <table class="table" id="dataTable" width="100%" cellspacing="0">
                         <thead>                    
                             <tr>                       

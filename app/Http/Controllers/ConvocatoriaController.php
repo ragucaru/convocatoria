@@ -29,24 +29,23 @@ class ConvocatoriaController extends Controller
     {
         
         $buscar=$request->nombre;
-        if ($buscar!='')
-            $registros = Registro::where('nombre','LIKE','%'.$buscar.'%')
-                        ->orWhere("cedula",'LIKE','%'.$buscar.'%')
-                        ->orWhere("especialidad",'LIKE','%'.$buscar.'%')
+        $busca=$request->get('especialidad');
+        
+        if (isset($busca))
+            $registros = Registro::where("especialidad",'=',$busca)
+                        /* ->orWhere("cedula",'LIKE','%'.$buscar.'%')
+                        ->orWhere('nombre','LIKE','%'.$buscar.'%') */
                         ->paginate(10);
+
+        elseif (isset($buscar))
+            $registros = Registro::where("cedula",'LIKE','%'.$buscar.'%')
+            ->orWhere('nombre','LIKE','%'.$buscar.'%') 
+            ->paginate(10);
         else
             $registros = Registro::paginate(10); 
 
             return view('lista', ['registros' => $registros]);
-       // return \View::make('lista',compact('registros'));  
-        
-       /*  $usuarios = Usuarios::with("horarios")->where('status', '=', 0);//->paginate(15);//->where("Badgenumber", "=", 921)->paginate(15);
-        if($name !='')
-            $usuarios = $usuarios->where("TITLE",'LIKE','%'.$name.'%')
-                    ->orWhere("Name",'LIKE','%'.$name.'%')
-                    ->orWhere("Badgenumber",'=',$name);
-        
-         */
+       
         
     }
 
