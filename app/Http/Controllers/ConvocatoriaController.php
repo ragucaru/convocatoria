@@ -15,7 +15,7 @@ class ConvocatoriaController extends Controller
      */
     public function index()
     {
-        
+       // return $registros = Registro::paginate(); 
         //$registros = Registro::all(); 
         //return \View::make('lista',compact('registros'));
     }
@@ -28,13 +28,12 @@ class ConvocatoriaController extends Controller
     public function buscar(Request $request)
     {
         
-        $buscar=$request->nombre;
-        $busca=$request->get('especialidad');
+        $busca=$request->get('busca');
         
-        if (isset($busca))
-            $registros = Registro::where("especialidad",'=',$busca)
-                        /* ->orWhere("cedula",'LIKE','%'.$buscar.'%')
-                        ->orWhere('nombre','LIKE','%'.$buscar.'%') */
+        //$busca=$request->especialidad;
+        //$busca='Neumólogo';
+        if ($busca != '')
+            $registros = Registro::where("especialidad",'=',$busca)                        
                         ->paginate(10);
 
         elseif (isset($buscar))
@@ -42,9 +41,10 @@ class ConvocatoriaController extends Controller
             ->orWhere('nombre','LIKE','%'.$buscar.'%') 
             ->paginate(10);
         else
-            $registros = Registro::paginate(10); 
-
-            return view('lista', ['registros' => $registros]);
+            $registros = Registro::paginate(10)->render(); 
+           
+            return response()->json(["registros" => $registros]);
+           // return view('lista', ['registros' => $registros]);
        
         
     }

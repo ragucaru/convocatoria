@@ -19,17 +19,17 @@ Route::get('/', function () { return Redirect::to('registro_medico'); });
 Route::get('/exito', function () {
     return view('exito');
 });
+Route::middleware('auth')->get('/lista', function () {
+    return view('lista');
+});
 
 
 
-//Route::resource('lista', 'ConvocatoriaController');
 
 
 Route::resource('crear', 'ConvocatoriaController');
-Route::get('lista', 'ConvocatoriaController@buscar')->middleware('auth');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Route::middleware('Auth')->get('lista', 'ConvocatoriaController@buscar');

@@ -8,7 +8,9 @@
         <div class="col-md-12">
             <div class="card">                
                 <div class="card-body ">        
-                    <form method="POST" action='crear'>
+                    {{-- <form method="POST" action='crear'> --}}
+
+                    
                     <input type="hidden" name="_token" value="{{ csrf_token() }}"></input>
                     
                         <div class="form-group row">
@@ -50,15 +52,20 @@
                         </div>  
 
                         
-                        <button class="btn btn-primary" type="submit">Guardar</button>
+                        <button class="btn btn-primary" id="guardar" onclick="prueba()" type="submit">Guardar</button>
                     
                     
-                    </form>
+                    {{-- </form>  --}}
                     </div>
             </div>
         </div>
     </div>                
 </div>
 @endsection
+
+@section('scripts')    
+    <script src="js/convocatoria/registro.js"></script> 
+@endsection
+    
 
 
