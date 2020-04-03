@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('convocatoria.layout')
   
 @section('title','Lista de Especialistas')
 
@@ -22,8 +22,7 @@
                                                 <label for="nombre">Nombre</label>                    
                                                 <input type="text" id= = "nombre" name = "nombre" class="form-control" placeholder="Nombre o Cédula" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                             </div>
-                                            <div class="col-md-1">
-                                            </div>                          
+                                                                    
                                             <div class="col-md-5">
                                                 <label for="especialidad">Especialidad</label>
                                                 <select class="form-control" id="especialidad" {{-- onchange="filtrar()" --}} name="especialidad">
@@ -36,14 +35,16 @@
                                                     <option>Enfermero/a/s especializadas en urgencias médicas e intensivistas</option>
                                                 </select>
                                             </div>
+
+                                            <div class="col-md-3">
+                                                <br>
+                                                <button name='filtrar' type='button' id='filtrar' class='btn btn-success' onclick="filtrar()" >FILTRAR</button> 
+                                            </div>
                                             
                                         </div>             
                                 
                                         <div class="form-group row">
-                                            <div class="col-md-2">
-                                                
-                                             <button name='filtrar' type='button' id='filtrar' class='btn btn-success' onclick="filtrar()" >FILTRAR</button> 
-                                            </div>
+                                            
                                         </div> 
                                 {{-- </form> --}}
                             </div>
@@ -61,19 +62,28 @@
         </div> --}}
         <div class="container">
             <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
                     
-                    <table class="table" id="dataTable" width="100%" cellspacing="0">
                         <thead>                    
                             <tr>                       
-                                <th>Nombre</th>
-                                <th>Especialidad</th>
-                                <th>Cédula</th>
-                                <th>Telefono</th>
-                                <th>Email</th>                                            
+                                <th width="25%">Nombre</th>
+                                <th width="35%">Especialidad</th>
+                                <th width="10%">Cédula</th>
+                                <th width="10%">Telefono</th>
+                                <th width="20%">Email</th>                                            
                             </tr>
+<<<<<<< HEAD:resources/views/lista.blade.php
                         </thead>               
                          
                     </table>
+=======
+                        </thead>
+                    </table>
+
+
+
+>>>>>>> 14d26780e134e86848fd94fcd261cc2888872098:resources/views/convocatoria/lista.blade.php
 
  
                         <table class="table table-bordered">               
@@ -81,14 +91,27 @@
                             </tbody>
                         </table>
                     
+<<<<<<< HEAD:resources/views/lista.blade.php
                         
                   
                   {{--  @include('pagination.default', ['paginator' => $errors])
                     {{ $errors->links('pagination.default') }}  --}}
             </div> 
+=======
+                   
+
+                    <div id="table_data">
+
+                       {{--  {!! $registros->links() !!} --}}
+                    </div>
+                    
+                </div>
+            </div>
+>>>>>>> 14d26780e134e86848fd94fcd261cc2888872098:resources/views/convocatoria/lista.blade.php
         </div>
 
 @endsection
 @section('scripts')    
-    <script src="js/convocatoria/registro.js"></script> 
+    <script src="js/convocatoria/lista.js"></script> 
+    
 @endsection
