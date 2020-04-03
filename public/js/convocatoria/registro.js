@@ -1,67 +1,60 @@
-var dato;
-$(document).ready(function(){ 
 
-    cargar_lista('');
-    paginado();
-    
-    
-});
-function paginado(){
+function guardar(){
 
-    $(document).on('click', '.pagination a', function(e){
-        e.preventDefault();
-        var page = $(this).attr('href').split('page=')[1];
-        fetch_data(page);
-       });
-   
-       function fetch_data(page){
-   
-       }
+    var nombre = $("#nombre").val(); 
+    var especialidad = $("#especialidad").val(); 
+    var cedula = $("#cedula").val(); 
+    var telefono = $("#telefono").val(); 
+    var email = $("#especialidad").val(); 
 
-
-}
-function filtrar()
-{     
-    
-      var busca = $("#especialidad").val(); 
-      cargar_lista(busca);
+    $.ajax({   
+        type: 'POST',
+        url:  "api/registro",
+        data: {nombre:nombre, especialidad:especialidad,cedula:cedula,telefono:telefono,email:email},
+        success: function(data){
+            mostrarMensaje(data.mensaje);
+            limpiarCampos();
+        }
+    })    
+ 
 }
 
 
-function cargar_lista(dato)
-{   
-    var table = $("#aspirantes").html('');
-    jQuery.ajax({   
-          data: {'busca': dato},     
-          type: "GET",
-          dataType: "json",
-          url:  'api/lista'
-    }).done(function( data, textStatus, jqXHR ) {
-          //console.log(data);
-         cargar_aspirantes(data.registros.data);
-          
-          }).fail(function( jqXHR, textStatus, errorThrown ) {
+function recuperarRegistro(codigo) {
+    $.ajax({
+      type: 'GET',
+      url: 'api/lista/{}=' + codigo,
+      data: '',
+      success: function(datos) {
+        $('#nombre').val(datos[0].nombre);
+        $('#cedula').val(datos[0].cedula);
+        $('#especialidad').val(datos[0].especialidad);
+        $("#telefono").val(datos[0].telefono);
 
-        
-          
+        //$("#telefono").modal('show');
+      },
+      error: function() {
+        alert("Hay un problema");
+      }
     });
-}
+  }
 
-function cargar_aspirantes(datos)
-{
-    var table = $("#aspirantes");
-      $.each(datos, function(key, value)
-    {
-          var linea = $("<tr></tr>");
-          var campo1 = $("<td>"+value.nombre+"</td>");
-          var campo2 = $("<td>"+value.especialidad+"</td>");
-          var campo3 = $("<td>"+value.cedula+"</td>");
-          var campo4 = $("<td>"+value.telefono+"</td>");
-          var campo5 = $("<td>"+value.email+"</td>");       
-         
-         /*  var campo5 = $("<td><button type='button' class='btn btn-success' onclick='kardex_empleado(\""+value.TITLE+"\")'>kardex</button></td>"); */
-                   //console.log(value);
-          linea.append(campo1, campo2, campo3, campo4,campo5);
-          table.append(linea);
-    });
-}
+
+   function mostrarMensaje(mensaje){
+    $("#divmsg").empty();
+    $("#divmsg").append("<p>"+mensaje+"</p>");
+    $("#divmsg").show(500);
+    $("#divmsg").hide(3000);
+
+   }
+
+
+   function limpiarCampos(){
+    $("#nombre").val(''); 
+    $("#especialidad").val(''); 
+    $("#cedula").val(''); 
+    $("#telefono").val(''); 
+    $("#especialidad").val(''); 
+   }
+
+  

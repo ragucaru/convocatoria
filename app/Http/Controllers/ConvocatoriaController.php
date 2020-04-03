@@ -34,15 +34,15 @@ class ConvocatoriaController extends Controller
         //$busca='Neumólogo';
         if ($busca != '')
             $registros = Registro::where("especialidad",'=',$busca)                        
-                        ->paginate(10);
+            ->orderBy('id','DESC')->paginate(10);
 
         elseif (isset($buscar))
             $registros = Registro::where("cedula",'LIKE','%'.$buscar.'%')
             ->orWhere('nombre','LIKE','%'.$buscar.'%') 
-            ->paginate(10);
-        else
-            $registros = Registro::paginate(10)->render(); 
-           
+            ->orderBy('id','DESC')->paginate(10);
+        else            
+            $registros = Registro::orderBy('id','DESC')->paginate(10);         
+
             return response()->json(["registros" => $registros]);
            // return view('lista', ['registros' => $registros]);
        
@@ -81,7 +81,8 @@ class ConvocatoriaController extends Controller
         $registro->telefono = $request->telefono;
         $registro->email = $request->email;
         $registro->save();
-        return redirect('exito');
+        return response()->json(['mensaje'=>'Registrado Correctamente']);
+       // return redirect('exito');
          }catch (Exception $e) { 
             // if an exception happened in the try block above 
          

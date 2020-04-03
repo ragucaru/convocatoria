@@ -17,4 +17,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/lista', 'ConvocatoriaController@buscar');
-//Route::get('lista', 'ConvocatoriaController@index');
+Route::post('/registro', 'ConvocatoriaController@store');

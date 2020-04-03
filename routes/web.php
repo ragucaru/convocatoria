@@ -12,22 +12,22 @@
 */
 
 Route::get('/registro_medico', function () {
-    return view('registro');
+    return view('convocatoria.registro');
 });
 
 Route::get('/', function () { return Redirect::to('registro_medico'); });
 Route::get('/exito', function () {
-    return view('exito');
+    return view('convocatoria.exito');
 });
 Route::middleware('auth')->get('/lista', function () {
-    return view('lista');
+    return view('convocatoria.lista');
 });
 
 
 
 
 
-Route::resource('crear', 'ConvocatoriaController');
+/* Route::resource('crear', 'ConvocatoriaController'); */
 
 
 Auth::routes();
