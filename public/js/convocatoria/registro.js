@@ -1,8 +1,8 @@
 var dato;
 $(document).ready(function(){ 
 
-    cargar_lista('');
-    paginado();
+    cargar_lista('','');
+    //paginado();
     
     
 });
@@ -24,15 +24,16 @@ function filtrar()
 {     
     
       var busca = $("#especialidad").val(); 
-      cargar_lista(busca);
+      var buscar = $("#nombre").val(); 
+      cargar_lista(busca,buscar);
 }
 
 
-function cargar_lista(dato)
+function cargar_lista(dato,dato2)
 {   
     var table = $("#aspirantes").html('');
     jQuery.ajax({   
-          data: {'busca': dato},     
+          data: {'busca': dato,'buscar': dato2},     
           type: "GET",
           dataType: "json",
           url:  'api/lista'

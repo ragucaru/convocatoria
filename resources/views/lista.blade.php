@@ -26,7 +26,7 @@
                                             </div>                          
                                             <div class="col-md-5">
                                                 <label for="especialidad">Especialidad</label>
-                                                <select class="form-control" id="especialidad" onchange="filtrar()" name="especialidad">
+                                                <select class="form-control" id="especialidad" {{-- onchange="filtrar()" --}} name="especialidad">
                                                     <option></option>
                                                     <option>Neumólogo</option>
                                                     <option>Neumólogo Pediatra</option>
@@ -56,7 +56,7 @@
         </div>
         {{-- <div class="container">
             <div class="row">
-                <p>Total de Registros: {{$registros->total() }} </p>
+                <p>Total de Registros: {{$errors->total() }} </p>
             </div>
         </div> --}}
         <div class="container">
@@ -71,26 +71,9 @@
                                 <th>Telefono</th>
                                 <th>Email</th>                                            
                             </tr>
-                        </thead>
-                    
-                            {{-- @foreach($registros as $registro)
-                                <tr>
-                                    <td>{{ $registro->nombre }}</td>
-                                    <td>{{ $registro->especialidad }}</td>
-                                    <td>{{ $registro->cedula }}</td>
-                                    <td>{{ $registro->telefono }}</td>
-                                    <td>{{ $registro->email }}</td>
-                                
-                                    {{--  <td>
-                                        <a class="btn btn-primary btn-xs" href="{{ route('movie.edit',['id' => $movie->id] )}}" >Edit</a> 
-                                        <a class="btn btn-danger btn-xs" href="{{ route('movie/destroy',['id' => $movie->id] )}}" >Delete</a>
-                                    </td>
-               
-                                </tr>
-                            @endforeach  --}}
-
-
-
+                        </thead>               
+                         
+                    </table>
 
  
                         <table class="table table-bordered">               
@@ -98,9 +81,11 @@
                             </tbody>
                         </table>
                     
-                    </table>
-                     {{ $registros->links() }}
-            </div>
+                        
+                  
+                  {{--  @include('pagination.default', ['paginator' => $errors])
+                    {{ $errors->links('pagination.default') }}  --}}
+            </div> 
         </div>
 
 @endsection

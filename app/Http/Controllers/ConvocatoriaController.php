@@ -6,6 +6,7 @@ use App\Registro;
 use Illuminate\Http\Request;
 
 
+
 class ConvocatoriaController extends Controller
 {
     /**
@@ -29,22 +30,21 @@ class ConvocatoriaController extends Controller
     {
         
         $busca=$request->get('busca');
+        $buscar=$request->get('buscar');
         
-        //$busca=$request->especialidad;
-        //$busca='Neumólogo';
         if ($busca != '')
             $registros = Registro::where("especialidad",'=',$busca)                        
                         ->paginate(10);
 
-        elseif (isset($buscar))
+        elseif ($buscar != '')
             $registros = Registro::where("cedula",'LIKE','%'.$buscar.'%')
             ->orWhere('nombre','LIKE','%'.$buscar.'%') 
             ->paginate(10);
         else
-            $registros = Registro::paginate(10)->render(); 
+            $registros = Registro::paginate(10); 
            
             return response()->json(["registros" => $registros]);
-           // return view('lista', ['registros' => $registros]);
+           
        
         
     }
