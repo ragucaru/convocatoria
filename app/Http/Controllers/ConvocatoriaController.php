@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 
 
+
 class ConvocatoriaController extends Controller
 {
     /**
@@ -16,9 +17,21 @@ class ConvocatoriaController extends Controller
      */
     public function index()
     {
-       // return $registros = Registro::paginate(); 
-        //$registros = Registro::all(); 
-        //return \View::make('lista',compact('registros'));
+       
+       return \View('convocatoria.prueba');
+    }
+
+    public function prueba(){
+    /*     $busca=$request->get('busca');
+        if ($busca != '')
+            $registros = Registro::where("cedula",'LIKE','%'.$busca.'%')
+            ->orWhere('nombre','LIKE','%'.$busca.'%')                       
+            ->paginate(8);
+        else */
+         $registros = Registro::paginate(8);              
+        
+        return \View::make('convocatoria.parteprueba',compact('registros'));
+       
     }
 
      /**
@@ -26,7 +39,7 @@ class ConvocatoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function buscar(Request $request)
+    public function listar(Request $request)
     {
         
         $busca=$request->get('busca');
@@ -38,22 +51,17 @@ class ConvocatoriaController extends Controller
 
         elseif ($buscar != '')
             $registros = Registro::where("cedula",'LIKE','%'.$buscar.'%')
-            ->orWhere('nombre','LIKE','%'.$buscar.'%') 
-<<<<<<< HEAD
+            ->orWhere('nombre','LIKE','%'.$buscar.'%')
+            ->orderBy('id','DESC')
             ->paginate(10);
-        else
-            $registros = Registro::paginate(10); 
-           
-=======
-            ->orderBy('id','DESC')->paginate(10);
-        else            
-            $registros = Registro::orderBy('id','DESC')->paginate(10);         
 
->>>>>>> 14d26780e134e86848fd94fcd261cc2888872098
+        else            
+            $registros = Registro::orderBy('id','DESC')->paginate(10);     
+
+             //return response()->json(view('convocatoria.lista', compact('registros')));
+           //return view('convocatoria.lista')->with('registros',$registros);
             return response()->json(["registros" => $registros]);
-           
-       
-        
+   
     }
 
     /**
@@ -113,9 +121,10 @@ class ConvocatoriaController extends Controller
      * @param  \App\Registro  $Registro
      * @return \Illuminate\Http\Response
      */
-    public function edit(Registro $Registro)
+    public function edit($id)
     {
-        //
+        $registro=Registro::find($id);
+        return response()->json($registro);
     }
 
     /**
@@ -125,9 +134,18 @@ class ConvocatoriaController extends Controller
      * @param  \App\Registro $Registro
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Registro $Registro)
+    public function update(Request $request, $id)
     {
-        //
+        $registro=Registro::find($id);
+        $registro->nombre = $request->nombre;
+        $registro->especialidad = $request->especialidad;
+        $registro->cedula = $request->cedula;
+        $registro->telefono = $request->telefono;
+        $registro->email = $request->email;
+        $registro->save();
+        return response()->json(['mensaje'=>'Actualizado Correctamente']);
+
+
     }
 
     /**
@@ -136,8 +154,14 @@ class ConvocatoriaController extends Controller
      * @param  \App\Registro $Registro
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Registro $Registro)
+    public function destroy($id)
     {
-        //
+        $registro=Registro::FindOrFail($id);
+        $result = $registro->delete();
+
+        if($result){
+            return response()->json(['mensaje'=>'Registro Eliminado']);
+            
+        }
     }
 }

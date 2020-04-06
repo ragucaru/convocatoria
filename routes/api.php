@@ -16,5 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/lista', 'ConvocatoriaController@buscar');
+Route::get('/lista', 'ConvocatoriaController@listar');
 Route::post('/registro', 'ConvocatoriaController@store');
+Route::get('/lista/{id}/editar', 'ConvocatoriaController@edit');
+Route::put('/registro/{id}', 'ConvocatoriaController@update');
+Route::delete('/registro/{id}', 'ConvocatoriaController@destroy');
+
+Route::get('/parteprueba/{page?}', 'ConvocatoriaController@prueba');

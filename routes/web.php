@@ -23,11 +23,14 @@ Route::middleware('auth')->get('/lista', function () {
     return view('convocatoria.lista');
 });
 
+Route::middleware('auth')->get('/prueba', function () {
+    return view('convocatoria.prueba');
+});
 
 
 
-
-/* Route::resource('crear', 'ConvocatoriaController'); */
+//Route::resource('convocatoria.prueba', 'ConvocatoriaController'); 
+//Route::get('parteprueba/{page?}', 'ConvocatoriaController@prueba');
 
 
 Auth::routes();
