@@ -77,22 +77,12 @@
                 </thead>
             </table>
 
-            {{-- @foreach($registros as $registro)
-                <tr>
-                    <td>{{$registro->nombre}}</td>
-                    <td>{{$registro->especialidad}}</td>
-                    <td>{{$registro->cedula}}</td>
-                    <td>{{$registro->telefono}}</td>
-                    <td>{{$registro->email}}</td>
-                </tr>
-            @endforeach
-            <div class="text-center"> {{$registro->links()}}</div> --}}
 
             <table class="table table-bordered">               
                 <tbody id='aspirantes'>
                 </tbody>
             </table> 
-           {{--  {{$registros->links()}}  --}}
+         
         </div>
     </div>
 </div>
@@ -120,7 +110,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Editar Registro</h5>
+          <h5 class="modal-title">Agregar Registro</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

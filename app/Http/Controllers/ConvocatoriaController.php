@@ -21,13 +21,13 @@ class ConvocatoriaController extends Controller
        return \View('convocatoria.prueba');
     }
 
-    public function prueba(){
-    /*     $busca=$request->get('busca');
+    public function prueba(Request $request){
+        $busca=$request->get('busca');
         if ($busca != '')
             $registros = Registro::where("cedula",'LIKE','%'.$busca.'%')
             ->orWhere('nombre','LIKE','%'.$busca.'%')                       
             ->paginate(8);
-        else */
+        else
          $registros = Registro::paginate(8);              
         
         return \View::make('convocatoria.parteprueba',compact('registros'));
